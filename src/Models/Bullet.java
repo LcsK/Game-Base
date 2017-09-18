@@ -35,6 +35,15 @@ public class Bullet extends Entities{
         getCurrentGraphic().fillRect(getX(), getY(), getW(), getH());
     }
     @Override
+    public boolean move(int width, int height)
+    {
+        if( getY()+getH()+getSy() < 0 || getY() + getSy() > height )
+            return false;
+        setY(getY() + getSy());
+        getRectangle().y = getY();
+        return true;
+    }
+    @Override
     public boolean hascollision(Entities e)
     {
         if(!getTargets().contains(e.getClass()))

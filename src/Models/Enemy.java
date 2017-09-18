@@ -11,8 +11,8 @@ import java.awt.Graphics;
  *
  * @author lucas
  */
-public class Enemy extends Entities {
-    private int health;
+public class Enemy extends Character {
+    
     
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
     public Enemy(int x, int y, int w, int h)
@@ -28,19 +28,10 @@ public class Enemy extends Entities {
     //</editor-fold>
     
     @Override
-    public void draw() {
-        getCurrentGraphic().setColor(getColor());
-        getCurrentGraphic().fillRect(getX(), getY(), getW(), getH());
-    }
-    
-    //<editor-fold defaultstate="collapsed" desc=" Getters and Setters ">
-    public int getHealth()
+    public boolean move(int width, int height)
     {
-        return this.health;
+        setX(getX() + getSx());
+        getRectangle().x = getX();
+        return true;
     }
-    public void setHealth(int health)
-    {
-        this.health = health;
-    }
-    //</editor-fold>
 }

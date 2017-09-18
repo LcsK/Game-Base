@@ -52,12 +52,7 @@ public abstract class Entities {
     //</editor-fold>
     
     public abstract void draw();
-    public void move() {
-        setX(getX() + getSx());
-        setY(getY() + getSy());
-        getRectangle().x = getX();
-        getRectangle().y = getY();
-    }
+    public abstract boolean move(int width, int height);
     public boolean hascollision(Entities e)
     {
         if(this.getClass().equals(e.getClass()))
