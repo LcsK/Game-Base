@@ -5,12 +5,18 @@
  */
 package JFrames;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author lucas
  */
 public class MainFormJFrame extends javax.swing.JFrame implements Runnable{
-
+    
+    private boolean leftArrow;
+    private boolean rightArrow;
+    private boolean space;
+    private boolean r;
     /**
      * Creates new form MainFormJFrame
      */
@@ -31,6 +37,14 @@ public class MainFormJFrame extends javax.swing.JFrame implements Runnable{
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -45,6 +59,28 @@ public class MainFormJFrame extends javax.swing.JFrame implements Runnable{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_LEFT)
+            this.leftArrow = true;
+        if(evt.getKeyCode() == KeyEvent.VK_RIGHT)
+            this.rightArrow = true;
+        if(evt.getKeyCode() == KeyEvent.VK_SPACE)
+            this.space = true;
+        if(evt.getKeyCode() == KeyEvent.VK_R)
+            this.r = true;
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_LEFT)
+            this.leftArrow = false;
+        if(evt.getKeyCode() == KeyEvent.VK_RIGHT)
+            this.rightArrow = false;
+        if(evt.getKeyCode() == KeyEvent.VK_SPACE)
+            this.space = false;
+        if(evt.getKeyCode() == KeyEvent.VK_R)
+            this.r = false;
+    }//GEN-LAST:event_formKeyReleased
 
     /**
      * @param args the command line arguments

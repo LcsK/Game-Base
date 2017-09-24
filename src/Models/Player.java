@@ -5,22 +5,34 @@
  */
 package Models;
 
+import java.awt.Color;
+
 /**
  *
  * @author lucas
  */
 public class Player extends Character {
-    private static boolean left;
-    private static boolean right;
+    private boolean left;
+    private boolean right;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
     public Player(int x, int y, int w, int h)
     {
         super(x,y,w,h);
+        setLeft(false);
+        setRight(false);
     }
     public Player(int x, int y, int w, int h, int health)
     {
         super(x,y,w,h,health);
+        setLeft(false);
+        setRight(false);
+    }
+    public Player(int x, int y, int w, int h, int health, Color color)
+    {
+        super(x,y,w,h,color);
+        setLeft(false);
+        setRight(false);
     }
     //</editor-fold>
     
@@ -42,22 +54,28 @@ public class Player extends Character {
         return false;
     }
     
+    @Override
+    public Bullet shoot()
+    {
+        return new Bullet(getX()+getW()/2, getY(), 5, 5, -3);
+    }
+    
     //<editor-fold defaultstate="collapsed" desc=" Getters and Setters ">
-    public static boolean getLeft()
+    public boolean getLeft()
     {
-        return Player.left;
+        return this.left;
     }
-    public static void setLeft(boolean left)
+    public void setLeft(boolean left)
     {
-        Player.left= left;
+        this.left= left;
     }
-    public static boolean getRight()
+    public boolean getRight()
     {
-        return Player.right;
+        return this.right;
     }
-    public static void setRight(boolean right)
+    public void setRight(boolean right)
     {
-        Player.right = right;
+        this.right = right;
     }
     //</editor-fold>
 }

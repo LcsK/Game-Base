@@ -8,7 +8,6 @@ package Models;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Random;
 
 /**
  *
@@ -17,7 +16,6 @@ import java.util.Random;
 public abstract class Entities {
     protected int x, y, w, h, sx, sy;
     protected Color color;
-    protected Random random;
     protected static Graphics currentGraphic;
     protected Rectangle rectangle;
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
@@ -29,8 +27,8 @@ public abstract class Entities {
         setH(h);
         setSx(1);
         setSy(1);
-        setRandom(new Random());
         setRectangle(new Rectangle(x, y, w, h));
+        setColor(Color.BLACK);
     }
     public Entities(int x, int y, int w, int h, int sx, int sy)
     {
@@ -132,14 +130,6 @@ public abstract class Entities {
     public void setColor(Color color)
     {
         this.color = color;
-    }
-    public Random getRandom()
-    {
-        return this.random;
-    }
-    private void setRandom(Random random)
-    {
-        this.random = random;
     }
     public Rectangle getRectangle()
     {

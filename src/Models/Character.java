@@ -62,6 +62,9 @@ public abstract class Character extends Entities {
         getCurrentGraphic().setColor(getColor());
         getCurrentGraphic().fillRect(getX(), getY(), getW(), getH());
     }
+    
+    public abstract Bullet shoot();
+    
     //<editor-fold defaultstate="collapsed" desc=" Getters and Setters ">
     public int getHealth()
     {
