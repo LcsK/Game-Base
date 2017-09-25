@@ -23,6 +23,7 @@ public class SpaceInvaders {
     private int level;
     private int score;
     private long lastShot;
+    private long lastShotEnemy;
     
     public SpaceInvaders(int width, int height)
     {
@@ -77,10 +78,11 @@ public class SpaceInvaders {
     }
     private void move(int width, int height)
     {
-        ArrayList<Enemy> shooters = new ArrayList<Enemy>();
+        Enemy shooter = null;
+        long currentTime = System.currentTimeMillis();
+        boolean auxEnemyColision = false;
         Random r = new Random();
         
-        boolean auxEnemyColision = false;
         for(Entities e : getEntities())
         {
             if(getEnemyColision() && e.getClass() == Enemy.class)
@@ -103,7 +105,7 @@ public class SpaceInvaders {
             {
                 if(r.nextInt(500) == 0)
                 {
-                    shooters.add((Enemy)e);
+                    shooter = (Enemy) e;
                 }
             }
             if(e.getClass() == Bullet.class)
@@ -111,9 +113,10 @@ public class SpaceInvaders {
                 hasCollision(e);
             }
         }
-        for(Enemy e: shooters)
+        if(shooter != null && currentTime > getLastShotEnemy() + 1000)
         {
-            getEntities().add(e.shoot());
+            getEntities().add(shooter.shoot());
+            setLastShotEnemy(currentTime);
         }
         setEnemyColision(auxEnemyColision);
         getEntities().removeAll(getGarbage());
@@ -205,6 +208,14 @@ public class SpaceInvaders {
     public void setLastShot(long lastShot)
     {
         this.lastShot = lastShot;
+    }
+    public long getLastShotEnemy()
+    {
+        return this.lastShotEnemy;
+    }
+    public void setLastShotEnemy(long lastShotEnemy)
+    {
+        this.lastShotEnemy = lastShotEnemy;
     }
     //</editor-fold>
 }
