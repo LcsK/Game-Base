@@ -44,7 +44,7 @@ public class Bullet extends Entities{
         return true;
     }
     @Override
-    public boolean hascollision(Entities e)
+    public boolean hasCollision(Entities e)
     {
         if(!getTargets().contains(e.getClass()))
             return false;

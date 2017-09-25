@@ -57,7 +57,9 @@ public class Player extends Character {
     @Override
     public Bullet shoot()
     {
-        return new Bullet(getX()+getW()/2, getY(), 5, 5, -3);
+        Bullet b = new Bullet((int)getX()+getW()/2, getY()-8, 5, 8, -3, Color.BLUE);
+        b.getTargets().add(Enemy.class);
+        return b;
     }
     
     //<editor-fold defaultstate="collapsed" desc=" Getters and Setters ">

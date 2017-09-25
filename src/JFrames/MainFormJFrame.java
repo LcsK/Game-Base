@@ -5,7 +5,10 @@
  */
 package JFrames;
 
+import Controllers.SpaceInvaders;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferStrategy;
 
 /**
  *
@@ -119,7 +122,29 @@ public class MainFormJFrame extends javax.swing.JFrame implements Runnable{
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BufferStrategy buffer = getBufferStrategy();
+        Graphics g;
+        
+        SpaceInvaders game = new SpaceInvaders(getWidth(), getHeight());
+        
+        while(true)
+        {
+            g = buffer.getDrawGraphics();
+            
+            game.run(g, getWidth(), getHeight(), this.leftArrow, this.rightArrow, this.space, this.r);
+            
+            g.dispose();
+            buffer.show();
+            try
+            {
+                Thread.sleep(10);
+            }
+            catch(InterruptedException ex)
+            {
+
+            }
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

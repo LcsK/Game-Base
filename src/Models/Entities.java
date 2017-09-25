@@ -51,7 +51,7 @@ public abstract class Entities {
     
     public abstract void draw();
     public abstract boolean move(int width, int height);
-    public boolean hascollision(Entities e)
+    public boolean hasCollision(Entities e)
     {
         if(this.getClass().equals(e.getClass()))
             return false;
